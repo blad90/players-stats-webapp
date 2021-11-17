@@ -1,41 +1,42 @@
 import React, { Component } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import AddPlayer from './components/add-player.component';
+import Player from './components/player.component';
+import PlayersList from './components/players-list.component';
 
-function App() {
-  return (
-    <div>
-      <nav>
-        <a href="/players">Players</a>
-        <div>
-          <li>
-            <Link to={"/players"}>
-              Players
-            </Link>
-          </li>
-          <li>
-            <Link to={"/add"}>
-              Add
-            </Link>
-          </li>
-        </div>
-      </nav>
-
+class App extends Component {
+  render(){
+    return (
       <div>
-        <Routes>
-          <Route path={["/", "/players/*"]}>
-           <PlayersList/>
-           </Route>
-
-          <Route path="/add/*">
-          <AddPlayer/> 
-          </Route>
-
-          <Route path="/players/:id" element={<Player/>} />
-        </Routes>
+        <nav className="navbar navbar-expand navbar-dark bg-dark">
+          <a href="/players" className="navbar-brand">Players Stats Panel</a>
+          <div className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link to={"/players"} className="nav-link">
+                Players 
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/add"} className="nav-link">
+                Add
+              </Link>
+            </li>
+          </div>
+        </nav>
+  
+        <div className="container mt-3">
+          <Routes>
+            <Route path="/players" element={<PlayersList/>}/>
+            <Route path="/add" element={<AddPlayer/>}/>
+            <Route path="/players/:id" element={<Player/>} />
+          </Routes>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  
 }
 
 export default App;

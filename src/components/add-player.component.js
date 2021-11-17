@@ -1,17 +1,18 @@
-import PlayerDataService from "../services/player.service"
+import PlayerDataService from '../services/player.service'
+import React from 'react';
 
 class AddPlayer extends React.Component {
     constructor(props){
         super(props);
         this.onChangeName = this.onChangeName.bind(this);
-        this.onChangeLastName = this.onChangeLastName(this);
-        this.onChangeJersey = this.onChangeJersey(this);
-        this.onChangeAtBats = this.onChangeAtBats(this);
-        this.onChangeH = this.onChangeH(this);
-        this.onChangeH2 = this.onChangeH2(this);
-        this.onChangeH3 = this.onChangeH3(this);
-        this.onChangeHR = this.onChangeHR(this);
-        this.onChangeFreeAgent = this.onChangeFreeAgent(this);
+        this.onChangeLastName = this.onChangeLastName.bind(this);
+        this.onChangeJersey = this.onChangeJersey.bind(this);
+        this.onChangeAtBats = this.onChangeAtBats.bind(this);
+        this.onChangeH = this.onChangeH.bind(this);
+        this.onChangeH2 = this.onChangeH2.bind(this);
+        this.onChangeH3 = this.onChangeH3.bind(this);
+        this.onChangeHR = this.onChangeHR.bind(this);
+        this.onChangeFreeAgent = this.onChangeFreeAgent.bind(this);
         this.savePlayer = this.savePlayer.bind(this);
         this.newPlayer = this.newPlayer.bind(this);
 
@@ -136,16 +137,16 @@ class AddPlayer extends React.Component {
 
     render() {
         return (
-        <div>
+        <div className="submit-form">
             {this.state.submitted ? (
                 <div> 
                     <h4>You submitted successfully!</h4>
-                    <button onClick={this.newPlayer}>Add
+                    <button className="btn btn-success" onClick={this.newPlayer}>Add
                     </button>
                 </div>
             ) : (
             <div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="name">Name</label>
                     <input
                         type="text"
@@ -157,18 +158,102 @@ class AddPlayer extends React.Component {
                     />
                 </div>
 
-                <div>
+                <div className="form-group">
                     <label htmlFor="last_name">Last Name</label>
                     <input
                         type="text"
                         className="form-control"
                         id="last_name"
-                        value={this.state.name}
+                        value={this.state.last_name}
                         onChange={this.onChangeLastName}
                         name="last_name"
                     />
                 </div>
-            <button onClick={this.savePlayer}>
+
+                <div>
+                    <label htmlFor="jersey">Jersey Number</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="jersey"
+                        value={this.state.jersey_number}
+                        onChange={this.onChangeJersey}
+                        name="jersey"
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="atbats">At Bats</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="atbats"
+                        value={this.state.at_bats}
+                        onChange={this.onChangeAtBats}
+                        name="atbats"
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="h">Hits</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="h"
+                        value={this.state.at_bats}
+                        onChange={this.onChangeH}
+                        name="h"
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="h2">Doubles</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="h2"
+                        value={this.state.H2}
+                        onChange={this.onChangeH2}
+                        name="h2"
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="h3">Triples</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="h3"
+                        value={this.state.H3}
+                        onChange={this.onChangeH3}
+                        name="h3"
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="hr">HR</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="hr"
+                        value={this.state.HR}
+                        onChange={this.onChangeHR}
+                        name="hr"
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="freeagent">Free Agent</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="freeagent"
+                        value={this.state.free_agent}
+                        onChange={this.onChangeFreeAgent}
+                        name="freeagent"
+                    />
+                </div>
+            <button className="btn btn-secondary" onClick={this.savePlayer}>
               Submit
             </button>
             </div>
